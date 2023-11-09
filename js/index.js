@@ -1,16 +1,16 @@
 Scene = {}
 
 Scene.Game = class extends Phaser.Scene {
-    preload ()
-    {
+    preload () {
         this.load.setBaseURL('Assets/');
-
         this.load.image('Player', 'Tiles/Characters/tile_0000.png');
     }
 
-    create ()
-    {
-        this.add.image(400, 300, 'Player');
+    create () {
+        this.physics.add.image(400, 300, 'Player');
+    }
+    update() {
+
     }
 }
 
