@@ -5,7 +5,7 @@ extends Area2D
 
 func _on_body_entered(body: Node2D) -> void:
 	
-	if sprite.frame != 1:
+	if sprite.frame != 1 or body != player:
 		return 
 	
 	sprite.frame = 0

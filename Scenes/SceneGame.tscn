@@ -378,4 +378,4 @@ position = Vector2(1152, -12)
 shape = SubResource("WorldBoundaryShape2D_8mxl6")
 
 [node name="Jump Pad" parent="." instance=ExtResource("5_8mxl6")]
-position = Vector2(7, 23)
+position = Vector2(107, -10)
