@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=4 uid="uid://d4cxq3lqf46lp"]
+[gd_scene load_steps=27 format=4 uid="uid://d4cxq3lqf46lp"]
 
 [ext_resource type="Script" uid="uid://dintn7app2gob" path="res://Scripts/SceneGame.gd" id="1_2j7f6"]
 [ext_resource type="Texture2D" uid="uid://banw8v02fmdn5" path="res://Assets/tilemap.png" id="2_1pxmn"]
@@ -8,7 +8,9 @@
 [ext_resource type="PackedScene" uid="uid://do2vc65cjfgjo" path="res://Scenes/Coin.tscn" id="6_28m3g"]
 [ext_resource type="Script" uid="uid://drllj7i0gkhjp" path="res://Scripts/CoinsLabel.gd" id="7_koxch"]
 [ext_resource type="Script" uid="uid://bepp8465vihjh" path="res://Scripts/HealthIndicator.gd" id="8_76o0r"]
-[ext_resource type="Script" uid="uid://ye5ysgxmbvc2" path="res://Scripts/Spike.gd" id="8_bgqso"]
+[ext_resource type="PackedScene" uid="uid://dk7thu8wwdovu" path="res://Scenes/Spike.tscn" id="9_76o0r"]
+[ext_resource type="PackedScene" uid="uid://c8rvtvqe3p1u3" path="res://Scenes/Lever.tscn" id="10_wwtm7"]
+[ext_resource type="PackedScene" uid="uid://br0n0041p5qsc" path="res://Scenes/Fence.tscn" id="11_oc3rq"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_8mxl6"]
 texture = ExtResource("2_j8om2")
@@ -388,9 +390,6 @@ animations = [{
 "speed": 5.0
 }]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_76o0r"]
-size = Vector2(18, 9)
-
 [node name="SceneGame" type="Node2D"]
 script = ExtResource("1_2j7f6")
 
@@ -542,31 +541,31 @@ position = Vector2(1086, 7)
 [node name="Coin25" parent="Coins" instance=ExtResource("6_28m3g")]
 position = Vector2(1070, 7)
 
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
+[node name="UI" type="CanvasLayer" parent="."]
 
-[node name="HealthIndicator" type="Node2D" parent="CanvasLayer"]
+[node name="HealthIndicator" type="Node2D" parent="UI"]
 position = Vector2(11, 15)
 script = ExtResource("8_76o0r")
 metadata/_edit_group_ = true
 
-[node name="First" type="AnimatedSprite2D" parent="CanvasLayer/HealthIndicator"]
+[node name="First" type="AnimatedSprite2D" parent="UI/HealthIndicator"]
 position = Vector2(4.5, 4.5)
 scale = Vector2(1.5, 1.5)
 sprite_frames = SubResource("SpriteFrames_jiwvy")
 
-[node name="Second" type="AnimatedSprite2D" parent="CanvasLayer/HealthIndicator"]
+[node name="Second" type="AnimatedSprite2D" parent="UI/HealthIndicator"]
 position = Vector2(27.499998, 4.5)
 scale = Vector2(1.5, 1.5)
 sprite_frames = SubResource("SpriteFrames_jiwvy")
 
-[node name="Third" type="AnimatedSprite2D" parent="CanvasLayer/HealthIndicator"]
+[node name="Third" type="AnimatedSprite2D" parent="UI/HealthIndicator"]
 position = Vector2(50.5, 4.5)
 scale = Vector2(1.5, 1.5)
 sprite_frames = SubResource("SpriteFrames_jiwvy")
 
-[node name="Coin Indicator" type="Node2D" parent="CanvasLayer"]
+[node name="Coin Indicator" type="Node2D" parent="UI"]
 
-[node name="Coins" type="Label" parent="CanvasLayer/Coin Indicator"]
+[node name="Coins" type="Label" parent="UI/Coin Indicator"]
 offset_left = 32.0
 offset_top = 36.0
 offset_right = 131.0
@@ -575,26 +574,17 @@ text = "CoinsDisplay"
 label_settings = SubResource("LabelSettings_koxch")
 script = ExtResource("7_koxch")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="CanvasLayer/Coin Indicator"]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="UI/Coin Indicator"]
 position = Vector2(16, 48)
 scale = Vector2(1.8055555, 1.8055555)
 sprite_frames = SubResource("SpriteFrames_aqtim")
 autoplay = "default"
 
-[node name="Spike" type="Node2D" parent="."]
+[node name="Spike" parent="." instance=ExtResource("9_76o0r")]
 position = Vector2(440, 167)
-script = ExtResource("8_bgqso")
-metadata/_edit_group_ = true
 
-[node name="Sprite2D" type="Sprite2D" parent="Spike"]
-texture = ExtResource("2_1pxmn")
-region_enabled = true
-region_rect = Rect2(144, 54, 18, 18)
+[node name="Lever" parent="." instance=ExtResource("10_wwtm7")]
+position = Vector2(479, 151)
 
-[node name="Area2D" type="Area2D" parent="Spike"]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Spike/Area2D"]
-position = Vector2(0, 4.5)
-shape = SubResource("RectangleShape2D_76o0r")
-
-[connection signal="body_entered" from="Spike/Area2D" to="Spike" method="_on_body_entered"]
+[node name="Fence" parent="." instance=ExtResource("11_oc3rq")]
+position = Vector2(521, 135)

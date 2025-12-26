@@ -1,0 +1,38 @@
+[gd_scene load_steps=7 format=3 uid="uid://c8rvtvqe3p1u3"]
+
+[ext_resource type="Texture2D" uid="uid://banw8v02fmdn5" path="res://Assets/tilemap.png" id="1_0so5j"]
+[ext_resource type="Script" uid="uid://jiq3qa0vso3h" path="res://Scripts/Lever.gd" id="2_eno02"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_aqtim"]
+atlas = ExtResource("1_0so5j")
+region = Rect2(72, 54, 18, 18)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ixt46"]
+atlas = ExtResource("1_0so5j")
+region = Rect2(90, 54, 18, 18)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_go12h"]
+atlas = ExtResource("1_0so5j")
+region = Rect2(108, 54, 18, 18)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_tngki"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_aqtim")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ixt46")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_go12h")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="Lever" type="AnimatedSprite2D"]
+sprite_frames = SubResource("SpriteFrames_tngki")
+frame_progress = 0.21103396
+script = ExtResource("2_eno02")
