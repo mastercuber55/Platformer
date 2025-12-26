@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=4 uid="uid://d4cxq3lqf46lp"]
+[gd_scene load_steps=26 format=4 uid="uid://d4cxq3lqf46lp"]
 
 [ext_resource type="Script" uid="uid://dintn7app2gob" path="res://Scripts/SceneGame.gd" id="1_2j7f6"]
 [ext_resource type="Texture2D" uid="uid://banw8v02fmdn5" path="res://Assets/tilemap.png" id="2_1pxmn"]
@@ -334,9 +334,6 @@ normal = Vector2(1, 0)
 normal = Vector2(-1, 0)
 distance = -2.0
 
-[sub_resource type="LabelSettings" id="LabelSettings_koxch"]
-font_color = Color(0.011764706, 0.011764706, 0.011764706, 1)
-
 [sub_resource type="AtlasTexture" id="AtlasTexture_wyu52"]
 atlas = ExtResource("2_1pxmn")
 region = Rect2(72, 36, 18, 18)
@@ -360,6 +357,31 @@ animations = [{
 }, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_oc3rq")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="LabelSettings" id="LabelSettings_koxch"]
+font_color = Color(0.011764706, 0.011764706, 0.011764706, 1)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_76o0r"]
+atlas = ExtResource("2_1pxmn")
+region = Rect2(198, 126, 18, 18)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jiwvy"]
+atlas = ExtResource("2_1pxmn")
+region = Rect2(216, 126, 18, 18)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_aqtim"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_76o0r")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jiwvy")
 }],
 "loop": true,
 "name": &"default",
@@ -522,15 +544,6 @@ position = Vector2(1070, 7)
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
-[node name="Coins" type="Label" parent="CanvasLayer"]
-offset_left = 4.0
-offset_top = 25.0
-offset_right = 103.0
-offset_bottom = 48.0
-text = "CoinsDisplay"
-label_settings = SubResource("LabelSettings_koxch")
-script = ExtResource("7_koxch")
-
 [node name="HealthIndicator" type="Node2D" parent="CanvasLayer"]
 position = Vector2(11, 15)
 script = ExtResource("8_76o0r")
@@ -550,6 +563,23 @@ sprite_frames = SubResource("SpriteFrames_jiwvy")
 position = Vector2(50.5, 4.5)
 scale = Vector2(1.5, 1.5)
 sprite_frames = SubResource("SpriteFrames_jiwvy")
+
+[node name="Coin Indicator" type="Node2D" parent="CanvasLayer"]
+
+[node name="Coins" type="Label" parent="CanvasLayer/Coin Indicator"]
+offset_left = 32.0
+offset_top = 36.0
+offset_right = 131.0
+offset_bottom = 59.0
+text = "CoinsDisplay"
+label_settings = SubResource("LabelSettings_koxch")
+script = ExtResource("7_koxch")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="CanvasLayer/Coin Indicator"]
+position = Vector2(16, 48)
+scale = Vector2(1.8055555, 1.8055555)
+sprite_frames = SubResource("SpriteFrames_aqtim")
+autoplay = "default"
 
 [node name="Spike" type="Node2D" parent="."]
 position = Vector2(440, 167)

@@ -5,4 +5,4 @@ func _ready() -> void:
 	Global.coinsUpdate.connect(_coinsUpdate)
 	
 func _coinsUpdate(coins):
-	text = "Coins: " + str(coins)
+	text = str(coins)
