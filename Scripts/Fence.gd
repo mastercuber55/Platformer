@@ -8,6 +8,5 @@ func _ready() -> void:
 	lever.leverUpdate.connect(_update)
 	
 func _update(isOn) -> void:
-	
 	shape.disabled = isOn
-	sprite.frame = isOn if 1 else 0
+	sprite.frame = int(isOn)
