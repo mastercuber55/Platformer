@@ -7,6 +7,7 @@ var coins = 0:
 	set(value):
 		coins = value
 		coinsUpdate.emit(coins)
+		print(coins)
 		
 var health = 6:
 	set(value):

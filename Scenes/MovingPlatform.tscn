@@ -1,0 +1,24 @@
+[gd_scene load_steps=4 format=3 uid="uid://lt51pj4vh42x"]
+
+[ext_resource type="Script" uid="uid://d0m6g8jxjanur" path="res://Scripts/MovingPlatform.gd" id="1_5olv3"]
+[ext_resource type="Texture2D" uid="uid://banw8v02fmdn5" path="res://Assets/tilemap.png" id="1_k502f"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_tngki"]
+size = Vector2(18, 10)
+
+[node name="MovingPlatform" type="AnimatableBody2D"]
+script = ExtResource("1_5olv3")
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_k502f")
+region_enabled = true
+region_rect = Rect2(126, 126, 18, 18)
+
+[node name="Raycast" type="RayCast2D" parent="."]
+position = Vector2(0, -4)
+target_position = Vector2(-9, 0)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -4)
+shape = SubResource("RectangleShape2D_tngki")
