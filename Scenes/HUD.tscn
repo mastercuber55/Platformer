@@ -1,0 +1,98 @@
+[gd_scene load_steps=12 format=3 uid="uid://b3uyjhpa66jrk"]
+
+[ext_resource type="Script" uid="uid://bepp8465vihjh" path="res://Scripts/HealthIndicator.gd" id="1_psnte"]
+[ext_resource type="Texture2D" uid="uid://banw8v02fmdn5" path="res://Assets/tilemap.png" id="2_s3jbq"]
+[ext_resource type="Script" uid="uid://drllj7i0gkhjp" path="res://Scripts/CoinsLabel.gd" id="3_c3eba"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wyu52"]
+atlas = ExtResource("2_s3jbq")
+region = Rect2(72, 36, 18, 18)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wwtm7"]
+atlas = ExtResource("2_s3jbq")
+region = Rect2(90, 36, 18, 18)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_oc3rq"]
+atlas = ExtResource("2_s3jbq")
+region = Rect2(108, 36, 18, 18)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_jiwvy"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wyu52")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wwtm7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_oc3rq")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="LabelSettings" id="LabelSettings_koxch"]
+font_color = Color(0.011764706, 0.011764706, 0.011764706, 1)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_76o0r"]
+atlas = ExtResource("2_s3jbq")
+region = Rect2(198, 126, 18, 18)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jiwvy"]
+atlas = ExtResource("2_s3jbq")
+region = Rect2(216, 126, 18, 18)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_aqtim"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_76o0r")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jiwvy")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="UI" type="CanvasLayer"]
+
+[node name="HealthIndicator" type="Node2D" parent="."]
+position = Vector2(11, 15)
+script = ExtResource("1_psnte")
+metadata/_edit_group_ = true
+
+[node name="First" type="AnimatedSprite2D" parent="HealthIndicator"]
+position = Vector2(4.5, 4.5)
+scale = Vector2(1.5, 1.5)
+sprite_frames = SubResource("SpriteFrames_jiwvy")
+
+[node name="Second" type="AnimatedSprite2D" parent="HealthIndicator"]
+position = Vector2(27.499998, 4.5)
+scale = Vector2(1.5, 1.5)
+sprite_frames = SubResource("SpriteFrames_jiwvy")
+
+[node name="Third" type="AnimatedSprite2D" parent="HealthIndicator"]
+position = Vector2(50.5, 4.5)
+scale = Vector2(1.5, 1.5)
+sprite_frames = SubResource("SpriteFrames_jiwvy")
+
+[node name="Coin Indicator" type="Node2D" parent="."]
+
+[node name="Coins" type="Label" parent="Coin Indicator"]
+offset_left = 32.0
+offset_top = 36.0
+offset_right = 131.0
+offset_bottom = 59.0
+text = "CoinsDisplay"
+label_settings = SubResource("LabelSettings_koxch")
+script = ExtResource("3_c3eba")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Coin Indicator"]
+position = Vector2(16, 48)
+scale = Vector2(1.8055555, 1.8055555)
+sprite_frames = SubResource("SpriteFrames_aqtim")
+autoplay = "default"
