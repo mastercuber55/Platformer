@@ -1,0 +1,53 @@
+[gd_scene load_steps=7 format=3 uid="uid://be45flo0qgej2"]
+
+[ext_resource type="Script" uid="uid://dfnkv1uy3ma0m" path="res://Scripts/Flag.gd" id="1_i6t4d"]
+[ext_resource type="Texture2D" uid="uid://banw8v02fmdn5" path="res://Assets/tilemap.png" id="2_xtjk2"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_a7rur"]
+atlas = ExtResource("2_xtjk2")
+region = Rect2(198, 90, 18, 18)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tpdw5"]
+atlas = ExtResource("2_xtjk2")
+region = Rect2(216, 90, 18, 18)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_exowd"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_a7rur")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tpdw5")
+}],
+"loop": true,
+"name": &"default",
+"speed": 2.5
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_exowd"]
+size = Vector2(18, 36)
+
+[node name="Flag" type="Node2D"]
+script = ExtResource("1_i6t4d")
+metadata/_edit_group_ = true
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, -18)
+sprite_frames = SubResource("SpriteFrames_exowd")
+autoplay = "default"
+frame_progress = 0.04400668
+
+[node name="Pole" type="Sprite2D" parent="."]
+texture = ExtResource("2_xtjk2")
+region_enabled = true
+region_rect = Rect2(198, 108, 18, 18)
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(0, -9)
+shape = SubResource("RectangleShape2D_exowd")
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_entered"]

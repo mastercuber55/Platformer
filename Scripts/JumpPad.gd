@@ -1,11 +1,11 @@
 extends Area2D
 
-@onready var player = $"../../Player"
+@onready var player = $"../../../Player"
 @onready var sprite = $"../AnimatedSprite2D"
 
 func _on_body_entered(body: Node2D) -> void:
 	
-	if sprite.frame != 1 or body != player:
+	if sprite.frame != 1:
 		return 
 	
 	sprite.frame = 0
