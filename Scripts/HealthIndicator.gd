@@ -9,8 +9,6 @@ func _ready() -> void:
 func _healthUpdate(health):	
 	if health <= 0:
 		for h in hearts: h.frame = 2
-		get_tree().reload_current_scene()
-		Global.health = 6
 		return
 	
 	for i in range(3):
