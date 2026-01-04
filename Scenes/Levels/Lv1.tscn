@@ -115,7 +115,6 @@ metadata/_edit_group_ = true
 shape = SubResource("WorldBoundaryShape2D_8mxl6")
 
 [node name="UI" parent="." instance=ExtResource("5_tpdw5")]
-visible = false
 
 [node name="Player" parent="." instance=ExtResource("7_4x2ct")]
 unique_name_in_owner = true

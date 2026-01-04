@@ -3,14 +3,14 @@ extends Node
 signal coinsUpdate(newCoins)
 signal healthUpdate(newHealth)
 
-var coins = 0:
+var coins := 0:
 	set(value):
 		coins = value
-		DiscordRPC.state = "Has " + str(coins) + " Coins 🪙"
-		DiscordRPC.refresh()
+		#DiscordRPC.state = "Has " + str(coins) + " Coins 🪙"
+		#DiscordRPC.refresh()
 		coinsUpdate.emit(coins)
 		
-var health = 6:
+var health := 6:
 	set(value):
 		health = value
 		
