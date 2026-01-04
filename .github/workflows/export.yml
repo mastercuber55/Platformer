@@ -36,6 +36,19 @@ jobs:
     - name: Create export directory
       run: mkdir -p Builds
 
+    # 🔐 Create Android DEBUG keystore (CI-only)
+    - name: Create Android debug keystore
+      run: |
+        keytool -genkeypair \
+          -keystore debug.keystore \
+          -storepass android \
+          -alias androiddebugkey \
+          -keypass android \
+          -dname "CN=Android Debug,O=Android,C=US" \
+          -keyalg RSA \
+          -keysize 2048 \
+          -validity 10000
+
     # 🪟 Windows
     - name: Export Windows
       run: |
@@ -52,6 +65,10 @@ jobs:
 
     # 🤖 Android (DEBUG)
     - name: Export Android (Debug)
+      env:
+        GODOT_ANDROID_KEYSTORE_DEBUG_PATH: debug.keystore
+        GODOT_ANDROID_KEYSTORE_DEBUG_USER: androiddebugkey
+        GODOT_ANDROID_KEYSTORE_DEBUG_PASSWORD: android
       run: |
         godot --headless --verbose \
           --export-debug "Android" \
