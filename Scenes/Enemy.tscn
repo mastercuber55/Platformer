@@ -44,16 +44,14 @@ position = Vector2(0.5, 5)
 shape = SubResource("RectangleShape2D_tngki")
 
 [node name="Bottom" type="RayCast2D" parent="."]
-visible = false
 position = Vector2(-6, 0)
 target_position = Vector2(0, 12)
 
 [node name="Sideways" type="RayCast2D" parent="."]
-visible = false
+position = Vector2(0, 10)
 target_position = Vector2(-7, 0)
 
 [node name="Area2D" type="Area2D" parent="."]
-visible = false
 collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
