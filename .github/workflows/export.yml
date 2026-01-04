@@ -1,0 +1,68 @@
+name: Export Godot Builds
+
+on:
+  push:
+    branches:
+      - main
+      - master
+
+jobs:
+  export:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write   # REQUIRED to create releases
+
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v4
+
+    - name: Setup Godot
+      uses: chickensoft-games/setup-godot@v2
+      with:
+        version: "4.2.1"
+        use-dotnet: false
+        include-templates: true
+
+    - name: Verify Godot
+      run: godot --version
+
+    # 🔢 Generate build version
+    - name: Set build version
+      id: version
+      run: |
+        SHORT_SHA=$(git rev-parse --short HEAD)
+        echo "version=build-${{ github.run_number }}-${SHORT_SHA}" >> $GITHUB_OUTPUT
+
+    - name: Create export directory
+      run: mkdir -p builds
+
+    # 🪟 Windows
+    - name: Export Windows
+      run: |
+        godot --headless --verbose \
+          --export-release "Windows Desktop" \
+          builds/game-${{ steps.version.outputs.version }}-windows.exe
+
+    # 🐧 Linux
+    - name: Export Linux
+      run: |
+        godot --headless --verbose \
+          --export-release "Linux/X11" \
+          builds/game-${{ steps.version.outputs.version }}-linux.x86_64
+
+    # 🤖 Android (DEBUG)
+    - name: Export Android (Debug)
+      run: |
+        godot --headless --verbose \
+          --export-debug "Android" \
+          builds/game-${{ steps.version.outputs.version }}-android-debug.apk
+
+    # 🚀 Create GitHub Release
+    - name: Create GitHub Release
+      uses: softprops/action-gh-release@v2
+      with:
+        tag_name: ${{ steps.version.outputs.version }}
+        name: Build ${{ steps.version.outputs.version }}
+        prerelease: true
+        files: |
+          builds/*
