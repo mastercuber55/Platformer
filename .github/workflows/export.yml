@@ -34,28 +34,28 @@ jobs:
         echo "version=build-${{ github.run_number }}-${SHORT_SHA}" >> $GITHUB_OUTPUT
 
     - name: Create export directory
-      run: mkdir -p builds
+      run: mkdir -p Builds
 
     # 🪟 Windows
     - name: Export Windows
       run: |
         godot --headless --verbose \
           --export-release "Windows Desktop" \
-          builds/game-${{ steps.version.outputs.version }}-windows.exe
+          Builds/game-${{ steps.version.outputs.version }}-windows.exe
 
     # 🐧 Linux
     - name: Export Linux
       run: |
         godot --headless --verbose \
           --export-release "Linux" \
-          builds/game-${{ steps.version.outputs.version }}-linux.x86_64
+          Builds/game-${{ steps.version.outputs.version }}-linux.x86_64
 
     # 🤖 Android (DEBUG)
     - name: Export Android (Debug)
       run: |
         godot --headless --verbose \
           --export-debug "Android" \
-          builds/game-${{ steps.version.outputs.version }}-android-debug.apk
+          Builds/game-${{ steps.version.outputs.version }}-android-debug.apk
 
     # 🚀 Create GitHub Release
     - name: Create GitHub Release
@@ -65,4 +65,4 @@ jobs:
         name: Build ${{ steps.version.outputs.version }}
         prerelease: true
         files: |
-          builds/*
+          Builds/*
