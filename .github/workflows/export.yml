@@ -47,7 +47,7 @@ jobs:
     - name: Export Linux
       run: |
         godot --headless --verbose \
-          --export-release "Linux/X11" \
+          --export-release "Linux" \
           builds/game-${{ steps.version.outputs.version }}-linux.x86_64
 
     # 🤖 Android (DEBUG)
