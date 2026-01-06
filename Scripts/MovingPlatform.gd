@@ -1,7 +1,7 @@
 extends AnimatableBody2D
 
-const SPEED = 40
-var direction = false
+const SPEED := 40
+var direction := false
 # false for left, true for right
 
 @onready var raycast = $Raycast

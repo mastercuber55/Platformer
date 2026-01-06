@@ -1,8 +1,8 @@
 extends Node2D
 
-@onready var shape = $StaticBody2D/CollisionShape2D
-@onready var sprite = $AnimatedSprite2D
-@onready var lever = $"../Lever"
+@onready var shape := $StaticBody2D/CollisionShape2D
+@onready var sprite := $AnimatedSprite2D
+@onready var lever := $"../Lever"
 
 func _ready() -> void:
 	lever.leverUpdate.connect(_update)

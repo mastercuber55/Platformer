@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=4 uid="uid://d4cxq3lqf46lp"]
+[gd_scene load_steps=19 format=4 uid="uid://d4cxq3lqf46lp"]
 
 [ext_resource type="Texture2D" uid="uid://b3r8pym68gayl" path="res://Assets/background.png" id="2_tpdw5"]
 [ext_resource type="Texture2D" uid="uid://banw8v02fmdn5" path="res://Assets/tilemap.png" id="3_exowd"]
@@ -10,6 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://lt51pj4vh42x" path="res://Scenes/Objects/MovingPlatform.tscn" id="9_ph5na"]
 [ext_resource type="PackedScene" uid="uid://do2vc65cjfgjo" path="res://Scenes/Objects/Coin.tscn" id="10_rhyrn"]
 [ext_resource type="Script" uid="uid://c72boj58dfowm" path="res://Scripts/KillZone.gd" id="11_h46bj"]
+[ext_resource type="PackedScene" uid="uid://b35oiidkxxo11" path="res://Scenes/Objects/CoinBlock.tscn" id="12_exowd"]
 [ext_resource type="PackedScene" uid="uid://be45flo0qgej2" path="res://Scenes/Objects/Flag.tscn" id="12_tpdw5"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_tpdw5"]
@@ -207,5 +208,11 @@ position = Vector2(981, 335)
 
 [node name="Jump Pad3" parent="JumpPads" instance=ExtResource("6_dr0qh")]
 position = Vector2(1107, 281)
+
+[node name="Coin Block" parent="." instance=ExtResource("12_exowd")]
+position = Vector2(298, 173)
+
+[node name="Coin Block2" parent="." instance=ExtResource("12_exowd")]
+position = Vector2(930, 173)
 
 [connection signal="body_entered" from="KillBorder" to="KillBorder" method="_on_body_entered"]

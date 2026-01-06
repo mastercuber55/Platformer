@@ -4,7 +4,7 @@ func _ready() -> void:
 	_healthUpdate(Global.health)
 	Global.healthUpdate.connect(_healthUpdate)
 
-@onready var hearts = [$First, $Second, $Third]
+@onready var hearts := [$First, $Second, $Third]
 
 func _healthUpdate(health):	
 	if health <= 0:

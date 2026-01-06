@@ -1,8 +1,8 @@
 extends CharacterBody2D
 
 
-const SPEED = 1600.0
-var direction = false
+const SPEED := 1600.0
+var direction := false
 # false for left, true for right
 
 @onready var sprite = $AnimatedSprite2D
