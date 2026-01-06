@@ -14,7 +14,7 @@ func _on_body_entered(body: Node2D) -> void:
 	tween.tween_property(self, "position", og, 0.1)\
 		.set_trans(Tween.TRANS_QUAD)\
 		.set_ease(Tween.EASE_OUT)
-		d
+		
 	tween.parallel().tween_property(coin, "position", coin.position + Vector2(0, -16), 0.1)\
 		.set_trans(Tween.TRANS_QUAD)\
 		.set_ease(Tween.EASE_OUT)
